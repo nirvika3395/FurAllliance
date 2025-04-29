@@ -1,2 +1,3 @@
 # FurAllliance
 Fur alliance  primarily focusses on rescuing stray animals, providing information on animal Shelters such as: Animal Nepal, Sneha’s Care, KAT Nepal, transparent fund raising to provide food, treatment   and report active animal rescue.  
+It is a software that contributes to connecting people willing to help the stray animals in need with the professionals and organizations that can provide help. The project is developed to easily contact veterinary care and animal shelters around the location with people engaged in fields to save stray animals suffering from any kind of injury while also helping the animals find a forever home
