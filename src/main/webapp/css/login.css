@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-image: url('/FurAlliance/resources/images/system/loginImg.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    background: rgba(255, 255, 255, 0.10); /* Lighter background */
+    backdrop-filter: blur(8px); /* Softer blur */
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    overflow: hidden;
+    width: 65%; /* Shrink a little */
+    max-width: 1200px;
+    height: 450px;
+    position: relative;
+    left: -80px; /* Move left to expose the puppy */
+}
+
+/* Left panel */
+.left-panel {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    color: black;
+    padding: 50px 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left-panel h1 {
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.left-panel p {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+/* Divider */
+.divider {
+    width: 2px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Right panel (login form) */
+.login-box {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.15); /* Light transparent form */
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 0 20px 20px 0;
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.row {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.col {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+button.login-button {
+    width: 100%;
+    background-color: #3f51b5;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button.login-button:hover {
+    background-color: #303f9f;
+}
+
+.link-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link-container a {
+    font-size: 16px;
+    color: #3f51b5;
+    text-decoration: none;
+}
+
+.link-container a:hover {
+    text-decoration: underline;
+}
+
+.forgot-link {
+    font-size: 14px;
+    color: #3f51b5;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
