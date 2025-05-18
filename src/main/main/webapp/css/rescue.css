@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+body {
+            font-family: sans-serif;
+            margin: 20px;
+            background-color:#adcae1;
+            background-image: url('/FurAlliance/resources/images/system/bgres.jpg');
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #555;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .rescue-form {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #666;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: calc(100% - 12px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color:#adcae1;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #adcae1;
+        }
+
+        .furalliance-info {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .furalliance-info h2 {
+            text-align: left;
+            color: #adcae1;
+            margin-bottom: 15px;
+        }
+
+        .furalliance-info p {
+            line-height: 1.6;
+            color: #555;
+        }

@@ -1,0 +1,97 @@
+header {
+    /* Background color using a soft coffee shade */
+    background-color:#F7EDDE; /* Or use hex: #e */
+
+    /* Text color for the main header elements */
+    color: var(--text-primary); /* Or use hex: #332211 */
+
+    /* Increased padding to make the header taller */
+    padding: 50px 30px;
+
+    /* Layout using flexbox to align items horizontally */
+    display: flex;
+    justify-content: space-between; /* Space out logo/title and navigation */
+    align-items: center; /* Vertically align items in the header */
+
+    /* Optional: Add a subtle border at the bottom */
+    border-bottom: 1px solid var(--primary-coffee-medium); /* Or use hex: #d2c4b0 */
+
+    /* Optional: Add a shadow for a bit of depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    /* Optional: Set a minimum height if needed */
+    min-height: 70px; /* Adjust as needed */
+}
+
+/* Style for the logo or website title within the header */
+.logo {
+    font-size: 1.5em; /* Adjust size as needed */
+    font-weight: bold;
+    color: inherit; /* Inherit color from the header */
+    text-decoration: none; /* Remove underline from links if logo is an <a> */
+}
+
+/* Style for the main navigation links */
+.nav-links {
+    list-style: none; /* Remove bullet points */
+    display: flex; /* Arrange links horizontally */
+    gap: 40px; /* Spacing between navigation items */
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+}
+
+.nav-links li a {
+    color: var(--text-secondary); /* Or use hex: #554433 */
+    text-decoration: none; /* Remove underlines from links */
+    padding: 8px 12px; /* Add some padding around links for better touch targets */
+    border-radius: 4px; /* Optional: Slightly rounded corners */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.nav-links li a:hover {
+    text-decoration: underline;
+    color: var(--accent-color); /* Or use hex: #8c7853 */
+}
+
+/* Optional: Style for active navigation link */
+.nav-links li a.active {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Optional: Style for a toggle button for mobile navigation (you'll need JavaScript to handle the functionality) */
+.menu-toggle {
+    display: none; /* Hidden by default on larger screens */
+    font-size: 1.5em;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+/* Media query for smaller screens to show the menu toggle */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide navigation on smaller screens */
+        flex-direction: column; /* Stack links vertically */
+        background-color: var(--primary-coffee-medium-light); /* Background for the mobile menu */
+        position: absolute;
+        top: 100%; /* Adjust as needed based on header height */
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 10; /* Ensure it's above other content */
+    }
+
+    .nav-links.active {
+        display: flex; /* Show navigation when active class is added (by JavaScript) */
+    }
+
+    .nav-links li {
+        padding: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block; /* Show the toggle button */
+    }
+}
