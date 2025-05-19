@@ -1,71 +1,186 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FurAlliance Admin Dashboard</title>
-   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/dashboard.css"/>
-    
+    <title>User Management</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admin.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-     <jsp:include page="header.jsp" />
-    <div class="container">
-        <header>
-            <h1>FurAlliance Admin Dashboard</h1>
-        </header>
-        <section class="metrics">
-            <div class="card">
-                <h2>Total Animals</h2>
-                <p>320</p>
-            </div>
-            <div class="card">
-                <h2>Adopted</h2>
-                <p>150</p>
-            </div>
-            <div class="card">
-                <h2>In Shelter</h2>
-                <p>170</p>
-            </div>
-        </section>
+    <div class="page-wrapper">
+        <!-- Header Section -->
+        <jsp:include page="header.jsp" />
 
-        <section class="distribution">
-            <h2>Animal Intake Distribution</h2>
-            <div class="chart-placeholder">
-                <p>Chart Placeholder</p>
+        <!-- Main Content Section -->
+        <main class="main-content">
+            <div class="admin-container">
+                <h1>User Management</h1>
+                
+                <%-- Status Messages --%>
+                <c:if test="${not empty success}">
+                    <div class="alert alert-success">${success}</div>
+                </c:if>
+                <c:if test="${not empty error}">
+                    <div class="alert alert-danger">${error}</div>
+                </c:if>
+                
+                <div class="admin-content-wrapper">
+                    <%-- User Form --%>
+                    <div class="user-form-container">
+                        <h2>
+                            <c:choose>
+                                <c:when test="${empty user}">Add New User</c:when>
+                                <c:otherwise>Edit User: ${user.userName}</c:otherwise>
+                            </c:choose>
+                        </h2>
+                        
+                        <form id="userForm" method="post" 
+                              action="${pageContext.request.contextPath}/dashboard">
+                            <input type="hidden" name="action" value="${empty user ? 'add' : 'update'}">
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" value="${user.firstName}" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" value="${user.lastName}" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" id="username" name="username" value="${user.userName}" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" value="${user.email}" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="dob">Date of Birth</label>
+                                    <input type="date" id="dob" name="dob" value="${user.dob}" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <div class="radio-group">
+                                        <label><input type="radio" name="gender" value="Male" ${user.gender == 'Male' ? 'checked' : ''}> Male</label>
+                                        <label><input type="radio" name="gender" value="Female" ${user.gender == 'Female' ? 'checked' : ''}> Female</label>
+                                        <label><input type="radio" name="gender" value="Other" ${user.gender == 'Other' ? 'checked' : ''}> Other</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="number">Phone Number</label>
+                                    <input type="tel" id="number" name="number" value="${user.number}" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" id="password" name="password" ${empty user ? 'required' : ''}>
+                                    <c:if test="${not empty user}">
+                                        <small class="text-muted">Leave blank to keep current password</small>
+                                    </c:if>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="imageUrl">Profile Image URL</label>
+                                    <input type="url" id="imageUrl" name="imageUrl" value="${user.imageUrl}">
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    ${empty user ? 'Create User' : 'Update User'}
+                                </button>
+                                
+                                <c:if test="${not empty user}">
+                                    <a href="${pageContext.request.contextPath}/dashboard" class="btn btn-secondary">Cancel</a>
+                                </c:if>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <%-- User List --%>
+                    <div class="user-list-container">
+                        <div class="list-header">
+                            <h2>User List</h2>
+                            
+                            <div class="search-bar">
+                                <input type="text" id="searchInput" placeholder="Search users...">
+                                <button class="btn btn-search">Search</button>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="user-table">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach items="${users}" var="u">
+                                        <tr>
+                                            <td>${u.userName}</td>
+                                            <td>${u.firstName} ${u.lastName}</td>
+                                            <td>${u.email}</td>
+                                            <td>${u.number}</td>
+                                            <td class="actions">
+                                                <a href="${pageContext.request.contextPath}/dashboard?action=edit&username=${u.userName}" class="btn btn-edit">Edit</a>
+                                                <form action="${pageContext.request.contextPath}/dashboard" method="post" style="display: inline;">
+                                                    <input type="hidden" name="action" value="delete">
+                                                    <input type="hidden" name="username" value="${u.userName}">
+                                                    <button type="submit" class="btn btn-delete" onclick="return confirm('Delete this user?')">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </main>
 
-        <section class="recent-intakes">
-            <h2>Recent Animal Intakes</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Intake Date</th>
-                        <th>Species</th>
-                        <th>Age</th>
-                        <th>Shelter</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>2025-04-20</td>
-                        <td>Dog</td>
-                        <td>3 months</td>
-                        <td>Fur Haven</td>
-                    </tr>
-                    <tr>
-                        <td>2025-04-19</td>
-                        <td>Cat</td>
-                        <td>1 year</td>
-                        <td>Happy Paws</td>
-                    </tr>
-                    <!-- Add more rows as necessary -->
-                </tbody>
-            </table>
-        </section>
+        <!-- Footer Section -->
+        <jsp:include page="footer.jsp" />
     </div>
-     <jsp:include page="footer.jsp" />
     
+    <script>
+        // Live search functionality
+        $(document).ready(function() {
+            $('#searchInput').on('keyup', function() {
+                const value = $(this).val().toLowerCase();
+                $('.user-table tbody tr').filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+            
+            // Add smooth fade-in effect when page loads
+            $('.admin-content-wrapper').css('opacity', '0').animate({
+                opacity: 1
+            }, 400);
+        });
+    </script>
 </body>
 </html>

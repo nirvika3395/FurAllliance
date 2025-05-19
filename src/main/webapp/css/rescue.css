@@ -3,7 +3,8 @@
 body {
             font-family: sans-serif;
             margin: 20px;
-            background-color: #f4f4f4;
+            background-color:#adcae1;
+            background-image: url('/FurAlliance/resources/images/system/bgres.jpg');
             color: #333;
         }
 
@@ -51,7 +52,7 @@ body {
         }
 
         button[type="submit"] {
-            background-color: #5cb85c;
+            background-color:#adcae1;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -61,7 +62,7 @@ body {
         }
 
         button[type="submit"]:hover {
-            background-color: #4cae4c;
+            background-color: #adcae1;
         }
 
         .furalliance-info {
@@ -74,7 +75,7 @@ body {
 
         .furalliance-info h2 {
             text-align: left;
-            color: #5cb85c;
+            color: #adcae1;
             margin-bottom: 15px;
         }
 

@@ -6,7 +6,7 @@ header {
     color: var(--text-primary); /* Or use hex: #332211 */
 
     /* Increased padding to make the header taller */
-    padding: 25px 30px;
+    padding: 50px 30px;
 
     /* Layout using flexbox to align items horizontally */
     display: flex;
@@ -35,7 +35,7 @@ header {
 .nav-links {
     list-style: none; /* Remove bullet points */
     display: flex; /* Arrange links horizontally */
-    gap: 20px; /* Spacing between navigation items */
+    gap: 40px; /* Spacing between navigation items */
     margin: 0; /* Remove default margins */
     padding: 0; /* Remove default padding */
 }

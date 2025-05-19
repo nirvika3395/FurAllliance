@@ -1,6 +1,8 @@
 package com.furalliance.util;
 
+
 import java.nio.ByteBuffer;
+
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
@@ -17,9 +19,17 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.GCMParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.Base64;
+import java.util.Arrays;
+
+
 
 public class PasswordUtil {
 
+	
 	private static final String ENCRYPT_ALGO = "AES/GCM/NoPadding";
 
 	private static final int TAG_LENGTH_BIT = 128; // must be one of {128, 120, 112, 104, 96}
@@ -119,4 +129,60 @@ public class PasswordUtil {
 		}
 
 	}
+	
+	
+	 /**
+     * Hashes a password with SHA-256 and salt
+     * @param password The plaintext password
+     * @return Hashed password string (salt:hash)
+     */
+	public static String hashPassword(String password) {
+        try {
+            // Generate random salt
+            SecureRandom random = new SecureRandom();
+            byte[] salt = new byte[16];
+            random.nextBytes(salt);
+            
+            // Create MessageDigest instance
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            
+            // Add salt bytes to digest
+            md.update(salt);
+            
+            // Get the hash's bytes
+            byte[] hashedBytes = md.digest(password.getBytes());
+            
+            // Combine salt and hash
+            byte[] combined = new byte[salt.length + hashedBytes.length];
+            System.arraycopy(salt, 0, combined, 0, salt.length);
+            System.arraycopy(hashedBytes, 0, combined, salt.length, hashedBytes.length);
+            
+            // Return as base64 encoded string
+            return Base64.getEncoder().encodeToString(combined);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Error hashing password", e);
+        }
+    }
+    /**
+	* Verifies a password against a stored hash
+     * @param password Plaintext password to verify
+     * @param storedHash Stored hash (salt:hash)
+     * @return true if password matches
+     */
+    public static boolean verifyPassword(String password, String storedHash) {
+        byte[] combined = Base64.getDecoder().decode(storedHash);
+        byte[] salt = new byte[16];
+        System.arraycopy(combined, 0, salt, 0, salt.length);
+        
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(salt);
+            byte[] hashedBytes = md.digest(password.getBytes());
+            
+            // Compare the hashes using constant-time comparison
+            return Arrays.equals(hashedBytes, Arrays.copyOfRange(combined, salt.length, combined.length));
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Error verifying password", e);
+        }
+    }
 }

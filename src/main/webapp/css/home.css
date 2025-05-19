@@ -90,7 +90,7 @@ p {
   background-color: #ffffff;
   padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
 }
 .feature-item h4 {
@@ -126,3 +126,136 @@ p {
   color: #333;
   margin-bottom: 60px;
 }
+
+/* nav */
+  * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Navigation bar container */
+        .nav-container {
+            width: 100%;
+            background-color: #00b5d1; /* Turquoise blue color */
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Grid for navigation items */
+        .nav-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        
+        /* Individual navigation item */
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            width: 160px;
+            padding: 20px 10px;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+        
+        .nav-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Icon styling */
+        .nav-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+            fill: #007a8c; /* Darker teal for the icons */
+        }
+        
+        /* Text styling */
+        .nav-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #007a8c; /* Darker teal for text */
+            line-height: 1.2;
+        }
+        
+        
+        
+        
+  /*another bar*/
+
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Stats bar container */
+        .stats-container {
+            width: 40%;
+            background-color: #00b5d1; /* Turquoise blue color */
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Grid for stats items */
+        .stats-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        
+        /* Individual stats item */
+        .stats-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            width: 200px;
+            padding: 25px 10px;
+            text-align: center;
+            border-radius: 2px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Icon styling */
+        .stats-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+            fill: #007a8c; /* Darker teal for the icons */
+        }
+        
+        /* Number styling */
+        .stats-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #007a8c; /* Darker teal for numbers */
+            margin-bottom: 5px;
+        }
+        
+        /* Text styling */
+        .stats-text {
+            font-size: 18px;
+            color: #007a8c; /* Darker teal for text */
+            line-height: 1.2;
+        }

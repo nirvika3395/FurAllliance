@@ -28,7 +28,7 @@ public class ImageUtil {
 	 * @return the extracted file name. If no filename is found, returns a default
 	 *         name "download.png".
 	 */
-	public String getImageNameFromPart(Part part) {
+	public static String getImageNameFromPart(Part part) {
 		// Retrieve the content-disposition header from the part
 		String contentDisp = part.getHeader("content-disposition");
 
@@ -71,7 +71,7 @@ public class ImageUtil {
 	 * @return {@code true} if the file was successfully uploaded, {@code false}
 	 *         otherwise.
 	 */
-	public boolean uploadImage(Part part, String rootPath, String saveFolder) {
+	public static boolean uploadImage(Part part, String rootPath, String saveFolder) {
 		String savePath = getSavePath(saveFolder);
 		File fileSaveDir = new File(savePath);
 
@@ -95,7 +95,7 @@ public class ImageUtil {
 		}
 	}
 	
-	public String getSavePath(String saveFolder) {
-		return "C:/Users/Prithivi/eclipse-workspace/islington-student/src/main/webapp/resources/images/"+saveFolder+"/";
+	public static  String getSavePath(String saveFolder) {
+		return "C:\\Users\\PREDATOR\\git\\repository1\\FurAlliance\\src\\main\\webapp\\resources\\images\\system"+saveFolder+"/";
 	}
 }

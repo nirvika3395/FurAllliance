@@ -12,7 +12,7 @@ import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.Part;
 
 import com.furalliance.model.UserModel;
-import com.furalliance.services.RegisterService;
+import com.furalliance.service.RegisterService;
 import com.furalliance.util.ImageUtil;
 import com.furalliance.util.PasswordUtil;
 import com.furalliance.util.RedirectionUtil;
@@ -27,6 +27,7 @@ public class RegisterController extends HttpServlet {
 	private ImageUtil imageUtil;
 	private RegisterService registerService;
 	private RedirectionUtil redirectionUtil;
+
 
 	@Override
 	public void init() throws ServletException {

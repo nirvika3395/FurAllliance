@@ -9,6 +9,17 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/register.css"/> 
 </head>
 <body>
+
+   <!-- Display error message if available -->
+		<c:if test="${not empty error}">
+			<p class="error-message">${error}</p>
+		</c:if>
+
+		<!-- Display success message if available -->
+		<c:if test="${not empty success}">
+			<p class="success-message">${success}</p>
+		</c:if>
+    
     <div class="container">
         <h2 style="text-align:center; margin-bottom: 30px;">Create a New Account</h2> <!-- 🔥 Updated heading -->
 

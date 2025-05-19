@@ -1,5 +1,7 @@
 package com.furalliance.util;
 
+import com.furalliance.model.UserModel;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -57,4 +59,23 @@ public class SessionUtil {
 		}
 	}
 	
+	public static boolean isAdminLoggedIn(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            UserModel user = (UserModel) session.getAttribute("user");
+            return user != null && user.isAdmin();
+        }
+        return false;
+    }
+
+    /**
+     * Gets current logged in user
+     * @param request HttpServletRequest object
+     * @return UserModel or null if not logged in
+     */
+    public static UserModel getCurrentUser(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        return (session != null) ? (UserModel) session.getAttribute("user") : null;
+    }
 }
+	

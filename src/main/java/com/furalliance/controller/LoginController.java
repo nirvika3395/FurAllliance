@@ -10,7 +10,7 @@ import java.io.IOException;
 
 import com.furalliance.util.ValidationUtil;
 import com.furalliance.model.UserModel;
-import com.furalliance.services.LoginService;
+import com.furalliance.service.LoginService;
 import com.furalliance.util.CookieUtil;
 import com.furalliance.util.SessionUtil;
 import com.furalliance.util.RedirectionUtil;
@@ -37,6 +37,7 @@ public class LoginController extends HttpServlet {
 		request.getRequestDispatcher("WEB-INF/pages/login.jsp").forward(request, response); 
 	}
 	
+	@SuppressWarnings("static-access")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//message can have different values accoringly while validating 

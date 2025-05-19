@@ -20,17 +20,18 @@ body {
 
 .container {
     display: flex;
-    background: rgba(255, 255, 255, 0.10); /* Lighter background */
-    backdrop-filter: blur(8px); /* Softer blur */
+    background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(8px);
     border-radius: 20px;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     overflow: hidden;
-    width: 65%; /* Shrink a little */
+    width: 65%;
     max-width: 1200px;
     height: 450px;
-    position: relative;
-    left: -80px; /* Move left to expose the puppy */
+    position: relative; /* keep it */
+    transform: translateX(-480px); /* shift left 80px */
 }
+
 
 /* Left panel */
 .left-panel {

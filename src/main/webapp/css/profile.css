@@ -20,6 +20,7 @@
         
         body {
             background-color: #f5f8fa;
+             background-image: url('/FurAlliance/resources/images/system/profilebg.jpg');
             color: var(--dark-color);
             line-height: 1.6;
         }
@@ -480,5 +481,6 @@
                 width: 100%;
                 height: 160px;
             }
+            
         }
    
